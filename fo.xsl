@@ -19,6 +19,13 @@
   <xsl:attribute-set name="component.titlepage.properties">
     <xsl:attribute name="span">all</xsl:attribute>
   </xsl:attribute-set>
+  <xsl:attribute-set name="abstract.title.properties">
+    <xsl:attribute name="text-align">start</xsl:attribute>
+    <xsl:attribute name="font-size">
+      <xsl:value-of select="$body.font.master * 2.0736"/>
+      <xsl:text>pt</xsl:text>
+    </xsl:attribute>
+  </xsl:attribute-set>
   <xsl:template match="d:info">
     <xsl:apply-templates select="d:abstract" mode="titlepage.mode"/>
     <xsl:apply-templates select="d:keywordset" mode="titlepage.mode"/>
