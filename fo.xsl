@@ -15,7 +15,7 @@
   <xsl:param name="column.count.body" select="2"/>
   <xsl:param name="body.start.indent" select="'0pt'"/>
   <xsl:param name="section.autolabel" select="1" />
-  <xsl:param name="appendix.autolabel" select="0" />
+  <xsl:param name="appendix.autolabel" select="'A'" />
   <xsl:param name="header.rule" select="0" />
   <xsl:param name="footer.rule" select="0" />
   <xsl:param name="email.delimiters.enabled" select="0" />
