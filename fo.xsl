@@ -18,6 +18,7 @@
   <xsl:param name="appendix.autolabel" select="0" />
   <xsl:param name="header.rule" select="0" />
   <xsl:param name="footer.rule" select="0" />
+  <xsl:param name="email.delimiters.enabled" select="0" />
   <xsl:attribute-set name="component.titlepage.properties">
     <xsl:attribute name="span">all</xsl:attribute>
   </xsl:attribute-set>
@@ -46,4 +47,41 @@
     <xsl:attribute name="space-before.minimum">1pt</xsl:attribute>
     <xsl:attribute name="space-before.maximum">7pt</xsl:attribute>
   </xsl:attribute-set>
+  <xsl:template match="d:author" mode="titlepage.mode">
+    <fo:table-cell>
+      <xsl:choose>
+        <xsl:when test="d:orgname">
+          <fo:block>
+            <xsl:apply-templates/>
+          </fo:block>
+        </xsl:when>
+        <xsl:otherwise>
+          <fo:block>
+            <xsl:call-template name="person.name"/>
+          </fo:block>
+          <xsl:if test="d:affiliation/d:orgname">
+            <fo:block>
+              <xsl:apply-templates select="d:affiliation/d:orgname" mode="titlepage.mode"/>
+            </fo:block>
+          </xsl:if>
+          <xsl:if test="d:email|d:affiliation/d:address/d:email">
+            <fo:block>
+              <xsl:apply-templates select="(d:email|d:affiliation/d:address/d:email)[1]"/>
+            </fo:block>
+          </xsl:if>
+        </xsl:otherwise>
+      </xsl:choose>
+    </fo:table-cell>
+  </xsl:template>
+  <xsl:template match="d:authorgroup" mode="titlepage.mode">
+    <fo:table table-layout="fixed" width="100%" space-before="2em"
+              space-after="3em" space-after.conditionality="retain">
+      <fo:table-body>
+        <fo:table-row>
+          <xsl:call-template name="anchor"/>
+          <xsl:apply-templates mode="titlepage.mode"/>
+        </fo:table-row>
+      </fo:table-body>
+    </fo:table>
+  </xsl:template>
 </xsl:stylesheet>

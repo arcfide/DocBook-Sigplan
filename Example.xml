@@ -7,12 +7,12 @@
     <authorgroup>
       <author>
         <personname>Name1</personname>
-        <affiliation>Affiliation1</affiliation>
+        <affiliation><orgname>Affiliation1</orgname></affiliation>
         <email>Email1</email>
       </author>
       <author>
         <personname>Name2 and Name3</personname>
-        <affiliation>Affiliation2/3</affiliation>
+        <affiliation><orgname>Affiliation2/3</orgname></affiliation>
         <email>Email2/3</email>
       </author>
     </authorgroup>
