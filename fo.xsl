@@ -5,9 +5,9 @@
                 xmlns:fo="http://www.w3.org/1999/XSL/Format">
   <xsl:import href="/home/arcfide/Libraries/Docbook5-XSL/fo/docbook.xsl"/>
   <xsl:import href="./titlepage.xsl" />
-  <xsl:param name="body.font.master" select="9" />
+  <xsl:param name="body.font.master" select="10" />
   <xsl:param name="body.font.family" select="'CMU Serif'" />
-  <xsl:param name="title.font.family" select="'CMU Sans Serif'" />
+  <xsl:param name="title.font.family" select="'CMU Serif'" />
   <xsl:param name="monospace.font.family" select="'CMU Typewriter Text'" />
   <xsl:param name="symbol.font.family" select="''" />
   <xsl:param name="generate.toc" select="'article nop'" />
@@ -23,10 +23,10 @@
   </xsl:attribute-set>
   <xsl:attribute-set name="abstract.title.properties">
     <xsl:attribute name="text-align">start</xsl:attribute>
-    <xsl:attribute name="font-size">
-      <xsl:value-of select="$body.font.master * 2.0736"/>
-      <xsl:text>pt</xsl:text>
-    </xsl:attribute>
+    <xsl:attribute name="font-size">12pt</xsl:attribute>
+  </xsl:attribute-set>
+  <xsl:attribute-set name="section.title.level1.properties">
+    <xsl:attribute name="font-size">12pt</xsl:attribute>
   </xsl:attribute-set>
   <xsl:template match="d:info">
     <xsl:apply-templates select="d:abstract" mode="titlepage.mode"/>
@@ -40,4 +40,10 @@
     <xsl:param name="gentext-key" select="''"/>
     <fo:block></fo:block>
   </xsl:template>
+  <xsl:attribute-set name="normal.para.spacing">
+    <xsl:attribute name="text-indent">1.5em</xsl:attribute>
+    <xsl:attribute name="space-before.optimum">5pt</xsl:attribute>
+    <xsl:attribute name="space-before.minimum">1pt</xsl:attribute>
+    <xsl:attribute name="space-before.maximum">7pt</xsl:attribute>
+  </xsl:attribute-set>
 </xsl:stylesheet>
