@@ -883,7 +883,7 @@
 	     t:named-template="component.title"
 	     param:node="ancestor-or-self::bibliography[1]"
 	     margin-left="{$title.margin.left}"
-	     font-size="&hsize5;"
+	     font-size="&hsize1;"
 	     font-family="{$title.fontset}"
 	     font-weight="bold"/>
       <subtitle
