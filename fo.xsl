@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:d="http://docbook.org/ns/docbook">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" 
+                xmlns:d="http://docbook.org/ns/docbook"
+                xmlns:fo="http://www.w3.org/1999/XSL/Format">
   <xsl:import href="/home/arcfide/Libraries/Docbook5-XSL/fo/docbook.xsl"/>
   <xsl:import href="./titlepage.xsl" />
   <xsl:param name="body.font.master" select="9" />
@@ -30,5 +32,12 @@
     <xsl:apply-templates select="d:abstract" mode="titlepage.mode"/>
     <xsl:apply-templates select="d:keywordset" mode="titlepage.mode"/>
     <xsl:apply-templates select="d:subjectset" mode="titlepage.mode"/>
+  </xsl:template>
+  <xsl:template name="header.content">  
+    <xsl:param name="pageclass" select="''"/>
+    <xsl:param name="sequence" select="''"/>
+    <xsl:param name="position" select="''"/>
+    <xsl:param name="gentext-key" select="''"/>
+    <fo:block></fo:block>
   </xsl:template>
 </xsl:stylesheet>
