@@ -13,6 +13,7 @@
   <xsl:param name="generate.toc" select="'article nop'" />
   <xsl:param name="fop1.extensions" select="1" />
   <xsl:param name="column.count.body" select="2"/>
+  <xsl:param name="column.gap.body" select="'2pc'"/>  
   <xsl:param name="body.start.indent" select="'0pt'"/>
   <xsl:param name="section.autolabel" select="1" />
   <xsl:param name="appendix.autolabel" select="'A'" />
@@ -59,9 +60,9 @@
   </xsl:template>
   <xsl:attribute-set name="normal.para.spacing">
     <xsl:attribute name="text-indent">1.5em</xsl:attribute>
-    <xsl:attribute name="space-before.optimum">5pt</xsl:attribute>
-    <xsl:attribute name="space-before.minimum">1pt</xsl:attribute>
-    <xsl:attribute name="space-before.maximum">7pt</xsl:attribute>
+    <xsl:attribute name="space-before.optimum">0pt</xsl:attribute>
+    <xsl:attribute name="space-before.minimum">0pt</xsl:attribute>
+    <xsl:attribute name="space-before.maximum">3pt</xsl:attribute>
   </xsl:attribute-set>
   <xsl:template match="d:author" mode="titlepage.mode">
     <fo:table-cell>
