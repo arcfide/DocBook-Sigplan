@@ -138,7 +138,7 @@
 </xsl:template>
 
 <xsl:template match="d:subtitle" mode="article.titlepage.recto.auto.mode">
-<fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="article.titlepage.recto.style" space-before="0.5em" font-size="12pt">
+<fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="article.titlepage.recto.style" space-before="0.5em" font-size="14.4pt">
 <xsl:apply-templates select="." mode="article.titlepage.recto.mode"/>
 </fo:block>
 </xsl:template>

@@ -42,7 +42,7 @@
 	   font-size="&hsize3;"
 	   font-weight="bold"/>
 
-    <subtitle space-before="0.5em" font-size="&hsize1;"/>
+    <subtitle space-before="0.5em" font-size="&hsize2;"/>
 
     <corpauthor space-before="0.5em"
                 font-size="&hsize0;"/>

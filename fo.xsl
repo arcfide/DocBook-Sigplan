@@ -20,6 +20,8 @@
   <xsl:param name="appendix.autolabel" select="'A'" />
   <xsl:param name="header.rule" select="0" />
   <xsl:param name="footer.rule" select="0" />
+  <xsl:param name="page.margin.inner" select="'0.75in'" />
+  <xsl:param name="page.margin.outer" select="'0.75in'" />
   <xsl:param name="email.delimiters.enabled" select="0" />
 
   <xsl:attribute-set name="component.titlepage.properties">
@@ -83,7 +85,7 @@
           </fo:block>
         </xsl:when>
         <xsl:otherwise>
-          <fo:block font-size="12pt">
+          <fo:block font-size="12pt" space-after="3pt">
             <xsl:call-template name="person.name"/>
           </fo:block>
           <xsl:if test="d:affiliation/d:orgname">
@@ -92,7 +94,7 @@
             </fo:block>
           </xsl:if>
           <xsl:if test="d:email|d:affiliation/d:address/d:email">
-            <fo:block>
+            <fo:block space-before="2pt">
               <xsl:apply-templates select="(d:email|d:affiliation/d:address/d:email)[1]"/>
             </fo:block>
           </xsl:if>
