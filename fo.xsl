@@ -103,7 +103,7 @@
 
   <xsl:template match="d:authorgroup" mode="titlepage.mode">
     <fo:table table-layout="fixed" width="100%" space-before="2em"
-              space-after="3em" space-after.conditionality="retain">
+              space-after="4em" space-after.conditionality="retain">
       <fo:table-body>
         <fo:table-row>
           <xsl:call-template name="anchor"/>
