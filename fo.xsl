@@ -26,6 +26,22 @@
     <xsl:attribute name="text-align">start</xsl:attribute>
     <xsl:attribute name="font-size">12pt</xsl:attribute>
   </xsl:attribute-set>
+  <xsl:attribute-set name="formal.title.properties" 
+                     use-attribute-sets="normal.para.spacing">
+    <xsl:attribute name="font-size">10pt</xsl:attribute>
+    <xsl:attribute name="text-indent">0em</xsl:attribute>
+    <xsl:attribute name="space-before.optimum">9pt</xsl:attribute>
+    <xsl:attribute name="space-before.minimum">7pt</xsl:attribute>
+    <xsl:attribute name="space-before.maximum">10pt</xsl:attribute>
+  </xsl:attribute-set>
+  <xsl:attribute-set name="list.block.spacing">
+    <xsl:attribute name="space-before.optimum">0.3em</xsl:attribute>
+    <xsl:attribute name="space-before.minimum">0.1em</xsl:attribute>
+    <xsl:attribute name="space-before.maximum">0.5em</xsl:attribute>
+    <xsl:attribute name="space-after.optimum">1em</xsl:attribute>
+    <xsl:attribute name="space-after.minimum">0.8em</xsl:attribute>
+    <xsl:attribute name="space-after.maximum">1.2em</xsl:attribute>
+  </xsl:attribute-set>
   <xsl:attribute-set name="section.title.level1.properties">
     <xsl:attribute name="font-size">12pt</xsl:attribute>
   </xsl:attribute-set>
@@ -56,7 +72,7 @@
           </fo:block>
         </xsl:when>
         <xsl:otherwise>
-          <fo:block>
+          <fo:block font-size="12pt">
             <xsl:call-template name="person.name"/>
           </fo:block>
           <xsl:if test="d:affiliation/d:orgname">

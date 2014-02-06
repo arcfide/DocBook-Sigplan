@@ -93,6 +93,24 @@
       Suspendisse id tempus tortor. Aenean luctus, elit commodo laoreet commodo, 
       justo nisi consequat massa, sed vulputate quam urna quis eros. Donec vel. 
     </simpara>
+    <itemizedlist spacing="compact">
+      <title>List title</title>
+      <listitem>
+        <para>
+          Test 1
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Test 2
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Test 3
+        </para>
+      </listitem>
+    </itemizedlist>
   </section>
   <section>
     <title>Background</title>
