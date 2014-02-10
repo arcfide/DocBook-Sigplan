@@ -115,4 +115,68 @@
     </fo:table>
   </xsl:template>
 
+  <xsl:template match="d:section/*[not(self::d:title or
+                       self::d:subtitle or
+                       self::d:titleabbrev or
+                       self::d:info or
+                       self::d:indexterm or
+                       self::d:remark or
+                       self::d:annotation)][1][(self::d:para or self::d:simpara)]">
+
+    <xsl:variable name="keep.together">
+      <xsl:call-template name="pi.dbfo_keep-together"/>
+    </xsl:variable>
+    <fo:block xsl:use-attribute-sets="para.properties" text-indent="0pt">
+      <xsl:if test="$keep.together != ''">
+        <xsl:attribute name="keep-together.within-column"><xsl:value-of
+        select="$keep.together"/></xsl:attribute>
+      </xsl:if>
+      <xsl:call-template name="anchor"/>
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+
+  <xsl:template match="d:abstract/*[not(self::d:title or
+                       self::d:subtitle or
+                       self::d:titleabbrev or
+                       self::d:info or
+                       self::d:indexterm or
+                       self::d:remark or
+                       self::d:annotation)][1][(self::d:para or self::d:simpara)]">
+
+    <xsl:variable name="keep.together">
+      <xsl:call-template name="pi.dbfo_keep-together"/>
+    </xsl:variable>
+    <fo:block xsl:use-attribute-sets="para.properties" text-indent="0pt">
+      <xsl:if test="$keep.together != ''">
+        <xsl:attribute name="keep-together.within-column"><xsl:value-of
+        select="$keep.together"/></xsl:attribute>
+      </xsl:if>
+      <xsl:call-template name="anchor"/>
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+
+  <xsl:template match="d:appendix/*[not(self::d:title or
+                       self::d:subtitle or
+                       self::d:titleabbrev or
+                       self::d:info or
+                       self::d:indexterm or
+                       self::d:remark or
+                       self::d:annotation)][1][(self::d:para or self::d:simpara)]">
+
+    <xsl:variable name="keep.together">
+      <xsl:call-template name="pi.dbfo_keep-together"/>
+    </xsl:variable>
+    <fo:block xsl:use-attribute-sets="para.properties" text-indent="0pt">
+      <xsl:if test="$keep.together != ''">
+        <xsl:attribute name="keep-together.within-column"><xsl:value-of
+        select="$keep.together"/></xsl:attribute>
+      </xsl:if>
+      <xsl:call-template name="anchor"/>
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+
+
 </xsl:stylesheet>
