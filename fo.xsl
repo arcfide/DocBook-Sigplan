@@ -31,6 +31,10 @@
   <xsl:attribute-set name="abstract.title.properties">
     <xsl:attribute name="text-align">start</xsl:attribute>
     <xsl:attribute name="font-size">12pt</xsl:attribute>
+    <xsl:attribute name="space-before.optimum">1in</xsl:attribute>
+    <xsl:attribute name="space-before.minimum">1in</xsl:attribute>
+    <xsl:attribute name="space-before.maximum">1in</xsl:attribute>
+    <xsl:attribute name="space-before.conditionality">retain</xsl:attribute>
   </xsl:attribute-set>
 
   <xsl:attribute-set name="formal.title.properties" 
