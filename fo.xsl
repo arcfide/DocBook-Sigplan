@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" 
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
                 xmlns:d="http://docbook.org/ns/docbook"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format">
 
   <xsl:import href="/home/arcfide/Libraries/Docbook5-XSL/fo/docbook.xsl"/>
   <xsl:import href="./titlepage.xsl" />
-  <xsl:param name="body.font.master" select="10" />
-  <xsl:param name="body.font.family" select="'CMU Serif'" />
-  <xsl:param name="title.font.family" select="'CMU Serif'" />
-  <xsl:param name="monospace.font.family" select="'CMU Typewriter Text'" />
+  <xsl:param name="body.font.master" select="9" />
+  <xsl:param name="body.font.family" select="'FreeSerif'" />
+  <xsl:param name="title.font.family" select="'FreeSerif'" />
+  <xsl:param name="monospace.font.family" select="'APL385 Unicode,DejaVu Sans'" />
   <xsl:param name="symbol.font.family" select="''" />
   <xsl:param name="generate.toc" select="'article nop'" />
   <xsl:param name="fop1.extensions" select="1" />
   <xsl:param name="column.count.body" select="2"/>
-  <xsl:param name="column.gap.body" select="'2pc'"/>  
+  <xsl:param name="column.gap.body" select="'2pc'"/>
   <xsl:param name="body.start.indent" select="'0pt'"/>
   <xsl:param name="section.autolabel" select="1" />
   <xsl:param name="appendix.autolabel" select="'A'" />
@@ -23,6 +23,7 @@
   <xsl:param name="page.margin.inner" select="'0.75in'" />
   <xsl:param name="page.margin.outer" select="'0.75in'" />
   <xsl:param name="email.delimiters.enabled" select="0" />
+  <xsl:param name="bibliography.numbered" select="1" />
 
   <xsl:attribute-set name="component.titlepage.properties">
     <xsl:attribute name="span">all</xsl:attribute>
@@ -37,9 +38,9 @@
     <xsl:attribute name="space-before.conditionality">retain</xsl:attribute>
   </xsl:attribute-set>
 
-  <xsl:attribute-set name="formal.title.properties" 
+  <xsl:attribute-set name="formal.title.properties"
                      use-attribute-sets="normal.para.spacing">
-    <xsl:attribute name="font-size">10pt</xsl:attribute>
+    <xsl:attribute name="font-size">9pt</xsl:attribute>
     <xsl:attribute name="text-indent">0em</xsl:attribute>
     <xsl:attribute name="space-before.optimum">9pt</xsl:attribute>
     <xsl:attribute name="space-before.minimum">7pt</xsl:attribute>
@@ -65,13 +66,18 @@
     <xsl:apply-templates select="d:subjectset" mode="titlepage.mode"/>
   </xsl:template>
 
-  <xsl:template name="header.content">  
+  <xsl:template name="header.content">
     <xsl:param name="pageclass" select="''"/>
     <xsl:param name="sequence" select="''"/>
     <xsl:param name="position" select="''"/>
     <xsl:param name="gentext-key" select="''"/>
     <fo:block></fo:block>
   </xsl:template>
+  
+  <xsl:attribute-set name="biblioentry.properties">
+    <xsl:attribute name="text-indent">-2em</xsl:attribute>
+    <xsl:attribute name="start-indent">2em</xsl:attribute>
+  </xsl:attribute-set>
 
   <xsl:attribute-set name="normal.para.spacing">
     <xsl:attribute name="text-indent">1.5em</xsl:attribute>
@@ -79,6 +85,41 @@
     <xsl:attribute name="space-before.minimum">0pt</xsl:attribute>
     <xsl:attribute name="space-before.maximum">3pt</xsl:attribute>
   </xsl:attribute-set>
+
+  <xsl:attribute-set name="formal.para.spacing"
+                     use-attribute-sets="normal.para.spacing">
+    <xsl:attribute name="text-indent">0em</xsl:attribute>
+    <xsl:attribute name="space-before.optimum">5pt</xsl:attribute>
+    <xsl:attribute name="space-before.minimum">3pt</xsl:attribute>
+    <xsl:attribute name="space-before.maximum">7pt</xsl:attribute>
+  </xsl:attribute-set>
+
+  <xsl:attribute-set name="pgwide.properties">
+    <xsl:attribute name="span">all</xsl:attribute>
+    <xsl:attribute name="padding-top">12pt</xsl:attribute>
+    <xsl:attribute name="padding-bottom">12pt</xsl:attribute>
+  </xsl:attribute-set>
+
+  <xsl:param name="formal.title.placement">
+    figure after
+  </xsl:param>
+
+
+  <xsl:template match="d:formalpara">  
+    <xsl:variable name="keep.together">
+      <xsl:call-template name="pi.dbfo_keep-together"/>
+    </xsl:variable>
+    <fo:block xsl:use-attribute-sets="formal.para.spacing">
+      <xsl:if test="$keep.together != ''">
+        <xsl:attribute name="keep-together.within-column">
+          <xsl:value-of select="$keep.together"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:call-template name="anchor"/>
+      <xsl:apply-templates/>
+    </fo:block>  
+  </xsl:template>
+                                                        
 
   <xsl:template match="d:author" mode="titlepage.mode">
     <fo:table-cell>
